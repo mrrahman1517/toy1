@@ -34,6 +34,9 @@ void lexer_error() {
 T_token lex() {
     int c;
     while ((c = fgetc(stdin)) != EOF) {
+        if (isspace(c)) {
+            continue;
+        } else
         if (isdigit(c)) {
             return create_number_token(c);
         } else if (c == ';') {
