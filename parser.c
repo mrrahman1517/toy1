@@ -59,6 +59,19 @@ T_expression parse_expression() {
     return create_expression(operand1, op, operand2);
 }
 
+T_statement_list create_statement_list(T_statement statement, T_statement_list statement_list) {
+    T_statement_list new_statement_list = (T_statement_list)malloc(sizeof(*new_statement_list));
+    new_statement_list->statement = statement;
+    new_statement_list->statement_list = statement_list;
+    return new_statement_list;
+}
+
+T_statement create_statement(T_expression expression) {
+    T_statement new_statement = (T_statement)malloc(sizeof(*new_statement));
+    new_statement->expression = expression;
+    return new_statement;
+}
+
 T_expression create_expression(T_token operand1, T_token op, T_token operand2) {
     T_expression new_expression = (T_expression)malloc(sizeof(*new_expression));
     new_expression->operand1 = operand1;
